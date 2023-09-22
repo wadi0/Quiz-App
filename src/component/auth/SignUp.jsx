@@ -1,32 +1,31 @@
 import "./static/signup.scss";
 import sign_up from "../../assets/img/signup-img.jpg";
 import { useFormik } from "formik";
-import { CustomInput } from "../custom-input/CustomInput";
 
 const SignUp = () => {
-
-  const signupFormValidation =(values)=>{
+  const signupFormValidation = (values) => {
     console.log(values);
-    let errors = {}
+    let errors = {};
 
-    return errors
-  }
+    return errors;
+  };
 
-  const signupFormSubmit=(values)=>{
+  const signupFormSubmit = (values) => {
     console.log(values);
-  }
+  };
 
-const signupForm = useFormik({
-  initialValues: {
-    name: "",
-    email: "",
-    password: "",
-  },
-  validateOnChange: true,
-  validateOnBlur: true,
-  validate: signupFormValidation,
-  onSubmit: signupFormSubmit
-})
+  const signupForm = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+    validateOnChange: true,
+    validateOnBlur: true,
+    validate: signupFormValidation,
+    onSubmit: signupFormSubmit,
+  });
 
   return (
     <div>
@@ -35,25 +34,57 @@ const signupForm = useFormik({
           <h5>Create an account</h5>
           <img src={sign_up} alt="signup-img" />
         </div>
+
         <div className="signup-right">
-          <input 
-            id="name" 
-            type="text" 
-            placeholder="Enter your name"
-            className="name"
-            value={signupForm.values.name}
-            onChange={signupForm.handleChange}
-            />
-            <CustomInput 
+          <div className="input-icon">
+            <input
+            id="name"
             type="text"
             placeholder="Enter your name"
-            icon="search"
             value={signupForm.values.name}
-            onChange={signupForm.handleChange}  
-            />
-            
+            onChange={signupForm.handleChange}
+          />
+          <span className="material-icons"> person </span>
+          </div>
+
+          <div className="input-icon">
+            <input
+            id="email"
+            type="email"
+            placeholder="Enter your email address"
+            value={signupForm.values.email}
+            onChange={signupForm.handleChange}
+          />
+          <span className="material-icons"> email </span>
+          </div>
+
+          <div className="input-icon">
+            <input
+            id="password"
+            type="password"
+            placeholder="Enter your password"
+            value={signupForm.values.password}
+            onChange={signupForm.handleChange}
+          />
+          <span className="material-icons"> lock </span>
+          </div>
+
+          <div className="input-icon">
+            <input
+            id="confirmPassword"
+            type="password"
+            placeholder="Enter your confirm password"
+            value={signupForm.values.confirmPassword}
+            onChange={signupForm.handleChange}
+          />
+          <span className="material-icons"> lock </span>
+          </div>
+
+          <button className="go_back">
+            Go back to the <b>Log in</b>
+          </button>
+
         </div>
-        
       </div>
     </div>
   );

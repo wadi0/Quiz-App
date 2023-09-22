@@ -1,12 +1,12 @@
 .signup-container {
-    width: 85%;
-    margin: auto;
+  width: 85%;
+  margin: auto;
   display: grid;
   grid-template-columns: 50% 50%;
 
   .signup-left {
     h5 {
-      font-size: 20px;
+      font-size: 30px;
       margin: 0;
       margin-bottom: 20px;
     }
@@ -18,12 +18,28 @@
   .signup-right {
     padding: 0px 20px;
 
-    input {
-      width: 100%;
-      padding: 8px 15px;
+    .input-icon {
+      display: flex;
+      align-items: center;
       border-radius: 5px;
       border: 1px solid lightgray;
-      font-size: 15px;
+      margin-bottom: 15px;
+
+      input {
+        width: 100%;
+        padding: 8px 15px;
+        border-radius: 5px;
+        outline: none;
+        border: 0px;
+        font-size: 20px;
+        color: grey;
+      }
+
+      span {
+        color: grey;
+        font-size: 30px;
+        padding-right: 15px;
+      }
     }
   }
 }
