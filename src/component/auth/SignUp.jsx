@@ -1,9 +1,23 @@
 import "./static/signup.scss";
 import sign_up from "../../assets/img/signup-img.jpg";
 import { useFormik } from "formik";
+import { useState } from "react";
 
 const SignUp = () => {
-  const signupFormValidation = (values) => {
+
+  const [passShow,setPassShow] = useState(false)
+  const [confirmPassShow,setConfirmPassShow] = useState(false)
+
+  const passwordShow = (field)=>{
+    if(field === 'password'){
+      setPassShow(!passShow)
+    }else if(field === 'confirmPassword'){
+    setConfirmPassShow(!confirmPassShow)
+  }
+  }
+
+  const signupFormValidation =
+   (values) => {
     console.log(values);
     let errors = {};
 
@@ -61,28 +75,30 @@ const SignUp = () => {
           <div className="input-icon">
             <input
             id="password"
-            type="password"
+            type={passShow ? 'text' : 'password'}
             placeholder="Enter your password"
             value={signupForm.values.password}
             onChange={signupForm.handleChange}
           />
-          <span className="material-icons"> lock </span>
+          <span className="material-icons" onClick={() =>passwordShow('password')}> {passShow ? 'lock_open' : 'lock'} </span>
           </div>
 
           <div className="input-icon">
             <input
             id="confirmPassword"
-            type="password"
+            type={confirmPassShow ? 'text' : 'password'}
             placeholder="Enter your confirm password"
             value={signupForm.values.confirmPassword}
             onChange={signupForm.handleChange}
           />
-          <span className="material-icons"> lock </span>
+          <span className="material-icons" onClick={() =>passwordShow('confirmPassword')}> {confirmPassShow ? 'lock_open' : 'lock'} </span>
           </div>
-
+          <div className="submit-btn">
+          <p>Go back to the</p>
           <button className="go_back">
-            Go back to the <b>Log in</b>
+             <b>Log in</b>
           </button>
+          </div>
 
         </div>
       </div>

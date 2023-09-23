@@ -41,5 +41,22 @@
         padding-right: 15px;
       }
     }
+
+    .submit-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      p {
+        margin: 0;
+        font-size: 14px;
+      }
+
+      button {
+        padding: 5px 10px;
+        margin: 0;
+        font-size: 18px;
+      }
+    }
   }
 }
