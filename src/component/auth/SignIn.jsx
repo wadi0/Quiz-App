@@ -71,7 +71,7 @@ export const SignIn = () => {
             </div>
   
             <div className="submit-btn">
-            <p>Don't have an account? <Link className="link" to="/sign-up">Sign Up</Link> instead.</p>
+            <p> Don't have an account? <Link className="link" to="/sign-up">Sign Up</Link> instead.</p>
             </div>
 
             <button type="submit" onClick={signupForm.handleSubmit}>
