@@ -3,6 +3,7 @@ import sign_up from "../../assets/img/signup-img.jpg";
 import { useFormik } from "formik";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Checkbox from "../custom/Checkbox";
 
 const SignUp = () => {
 
@@ -20,11 +21,11 @@ const SignUp = () => {
   const signupFormValidation =(values) => {
     console.log(values);
     const errors = {};
-
-    // if (!values.email.trim()) errors.email = 'Name is required';
-    // if (!values.password.trim()) errors.password = 'Name is required';
-    // if (!values.confirmPassword.trim()) errors.confirmPassword = 'Name is required';
-    // if (values.name.length < 6) errors.name = "First Name should be at least 6 characters long";
+    if (!values.agree) errors.agree = 'Terms & condition is required';
+    if (!values.email.trim()) errors.email = 'Email is required';
+    if (!values.password.trim()) errors.password = 'Password is required';
+    if (!values.confirmPassword.trim()) errors.confirmPassword = 'Confirm password is required';
+    if (values.name.length < 6) errors.name = "Name should be at least 6 characters long";
     if (!values.name.trim()) errors.name = 'Name is required';
 
     console.log(errors)
@@ -68,8 +69,7 @@ const SignUp = () => {
           />
           <span className="material-icons"> person </span>
           </div>
-          <p>{signupForm.errors.name}</p>
-
+          <p className="validation-style">{signupForm.errors.name}</p>
 
           <div className="input-icon">
             <input
@@ -81,6 +81,7 @@ const SignUp = () => {
           />
           <span className="material-icons"> email </span>
           </div>
+          <p className="validation-style">{signupForm.errors.email}</p>
 
           <div className="input-icon">
             <input
@@ -92,6 +93,7 @@ const SignUp = () => {
           />
           <span className="material-icons" onClick={() =>passwordShow('password')}> {passShow ? 'lock_open' : 'lock'} </span>
           </div>
+          <p className="validation-style">{signupForm.errors.password}</p>
 
           <div className="input-icon">
             <input
@@ -103,16 +105,27 @@ const SignUp = () => {
           />
           <span className="material-icons" onClick={() =>passwordShow('confirmPassword')}> {confirmPassShow ? 'lock_open' : 'lock'} </span>
           </div>
+          <p className="validation-style">{signupForm.errors.confirmPassword}</p>
 
           <div className="checkbox">
-            <input 
+            <Checkbox
+              className='input'
+              textClass='span'
+              required
+              text="I agree to the Terms & Conditions"
+              value={signupForm.values.agree}
+              onChange={signupForm.handleChange}
+            />
+
+            {/* <input 
             id="checkbox"
             type="checkbox"
             value={signupForm.values.agree} 
             onChange={signupForm.handleChange}
             />
-            <span>I agree to the Terms & Conditions</span>
+            <span>I agree to the Terms & Conditions</span> */}
           </div>
+          <p className="validation-style">{signupForm.errors.agree}</p>
 
           <div className="submit-btn">
           <p>Go back to the</p>
