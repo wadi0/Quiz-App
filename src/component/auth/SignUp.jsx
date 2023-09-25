@@ -2,13 +2,17 @@ import "./static/signup.scss";
 import sign_up from "../../assets/img/signup-img.jpg";
 import { useFormik } from "formik";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Checkbox from "../custom/Checkbox";
+import { useAuth } from "../../context/AuthContext";
 
 const SignUp = () => {
 
   const [passShow,setPassShow] = useState(false)
   const [confirmPassShow,setConfirmPassShow] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const { signup } = useAuth()
+  const navigate = useNavigate();
 
   const passwordShow = (field)=>{
     if(field === 'password'){
@@ -32,8 +36,17 @@ const SignUp = () => {
     return errors;
   };
 
-  const signupFormSubmit = (values) => {
+  const signupFormSubmit = async(values) => {
     console.log(values);
+    setLoading(true);
+    try{
+      await signup(values.email, values.password, values.name)
+      navigate('/')
+    }catch(error){
+      console.log(error)
+      setLoading(false);
+
+    }
   };
 
   const signupForm = useFormik({
@@ -42,7 +55,7 @@ const SignUp = () => {
       email: "",
       password: "",
       confirmPassword: "",
-      agree: "",
+      agree: false,
     },
     validateOnChange: true,
     validateOnBlur: true,
@@ -110,6 +123,8 @@ const SignUp = () => {
           <div className="checkbox">
             <Checkbox
               className='input'
+              name='agree'
+              // checked={isChecked}
               textClass='span'
               required
               text="I agree to the Terms & Conditions"
@@ -132,7 +147,10 @@ const SignUp = () => {
           <Link className="link" to="/sign-in">Sign In</Link>
           </div>
 
-          <button type="submit" onClick={signupForm.handleSubmit}>
+          <button 
+            disabled={loading}
+            type="submit" 
+            onClick={signupForm.handleSubmit}>
              Sign Up
           </button>
 

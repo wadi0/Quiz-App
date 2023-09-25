@@ -1,6 +1,6 @@
 import'./static/checkbox.scss'
 
-const Checkbox = ({className, text,textClass, ...rest}) => {
+const Checkbox = ({className, text, textClass, ...rest}) => {
   return (
     <label className={className}>
         <input type="checkbox" {...rest} />
