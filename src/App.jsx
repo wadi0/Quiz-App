@@ -6,11 +6,13 @@ import { Layout } from './component/layout/Layout';
 import { Home } from './component/quiz/Home';
 import Quiz from './component/quiz/Quiz';
 import Result from './component/page/result/Result';
+import { AuthProvider } from './context/AuthContext';
 
 
 function App() {
   return (
     <BrowserRouter>
+        <AuthProvider>
       <Routes>
         <Route path='/' element={<Layout />}>
 
@@ -23,6 +25,7 @@ function App() {
 
         </Route>
       </Routes>
+        </AuthProvider>
     </BrowserRouter>
   );
 }
