@@ -8,6 +8,7 @@ import Quiz from './component/quiz/Quiz';
 import Result from './component/page/result/Result';
 import { AuthProvider } from './context/AuthContext';
 import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
         <Route path='/' element={<Layout />}>
 
         <Route path='/' element={<Home />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/sign-in" element={<PublicRoute><SignIn /></PublicRoute>} />
+        <Route path="/sign-up" element={<PublicRoute><SignUp /></PublicRoute>} />
         <Route path='/quiz' element={<PrivateRoute><Quiz /></PrivateRoute>} />
         <Route path='/result' element={<PrivateRoute><Result /></PrivateRoute>} />
         {/* <Route path="*" element={<NoPage />} /> */}

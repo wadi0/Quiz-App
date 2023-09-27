@@ -28,7 +28,7 @@ export const Navbar = () => {
                 Signup
               </Link>
               <Link to="/sign-in" className="link">
-                Logout
+                Signin
               </Link>
             </b>
           </>
