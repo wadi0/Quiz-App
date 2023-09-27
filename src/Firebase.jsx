@@ -12,7 +12,10 @@ const app = initializeApp({
 
   messagingSenderId: "1064393317652",
 
-  appId: "1:1064393317652:web:907bf4c4d00702bc817601"
+  appId: "1:1064393317652:web:907bf4c4d00702bc817601",
+
+  databaseURL: "https://quiz-app-b58a1-default-rtdb.asia-southeast1.firebasedatabase.app",
+
 
   // apiKey: import.meta.env.QUIZ_APP_API_KEY,
 

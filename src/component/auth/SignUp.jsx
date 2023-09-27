@@ -29,7 +29,7 @@ const SignUp = () => {
     if (!values.email.trim()) errors.email = 'Email is required';
     if (!values.password.trim()) errors.password = 'Password is required';
     if (!values.confirmPassword.trim()) errors.confirmPassword = 'Confirm password is required';
-    if (values.name.length < 6) errors.name = "Name should be at least 6 characters long";
+    // if (values.name.length < 6) errors.name = "Name should be at least 6 characters long";
     if (!values.name.trim()) errors.name = 'Name is required';
 
     console.log(errors)
