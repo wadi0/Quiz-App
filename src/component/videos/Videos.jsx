@@ -24,12 +24,7 @@ const Videos = () => {
         {videos.map((video) =>
           video.noq > 0 ? (
             <Link
-              to={{
-                pathname: `/quiz/${video.youtubeID}`,
-                state: {
-                  videoTitle: video.title,
-                },
-              }}
+              to='/quiz'
               key={video.youtubeID}
             >
               <Video

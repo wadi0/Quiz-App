@@ -7,6 +7,10 @@ export const Video = ({title, id, noq}) => {
         // <Link  className='link'>
             <div className="video">
                 <img src={thumb} alt={title} />
+                {/* <img
+        src={`http://img.youtube.com/vi/${id}/maxresdefault.jpg`}
+        alt={title}
+      /> */}
                 <p>{title}</p>
                 <div className="qmeta">
                     <p>{noq} Questions</p>
